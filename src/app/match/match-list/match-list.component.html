@@ -1,0 +1,15 @@
+<h3>Kết quả</h3>
+<div *ngFor="let match of this.matches">
+  <table>
+    <tr>
+      <td>{{match.matchDate}}</td>
+      <td>{{match.homeTeamName}}</td>
+      <td>{{match.homeScore}}</td>
+    </tr>
+    <tr>
+      <td>{{match.kickoff}}</td>
+      <td>{{match.awayTeamName}}</td>
+      <td>{{match.awayScore}}</td>
+    </tr>
+  </table>
+</div>

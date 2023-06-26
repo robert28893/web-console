@@ -1,0 +1,5 @@
+<div *ngIf="competition">
+<h2>{{this.competition.name}}</h2>
+<app-season-dropdown-list [competition]="competition"></app-season-dropdown-list>
+<app-match-list></app-match-list>
+</div>

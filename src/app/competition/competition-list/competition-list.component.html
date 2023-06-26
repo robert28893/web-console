@@ -1,0 +1,8 @@
+<h2>Giải đấu</h2>
+<div *ngFor="let competition of this.competitions | async">
+  <h3>
+    <a [title]="competition.name" [routerLink]="['/competition/competition-detail']">
+      {{competition.name}}
+    </a>
+  </h3>
+</div>
