@@ -8,6 +8,7 @@ import { CompetitionListComponent } from './competition/competition-list/competi
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { CompetitionDetailComponent } from './competition/competition-detail/competition-detail.component';
 import { SeasonDropdownListComponent } from './season/season-dropdown-list/season-dropdown-list.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SeasonDropdownListComponent } from './season/season-dropdown-list/seaso
     CompetitionListComponent,
     MatchListComponent,
     CompetitionDetailComponent,
-    SeasonDropdownListComponent
+    SeasonDropdownListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
