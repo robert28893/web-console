@@ -9,6 +9,7 @@ import { MatchListComponent } from './match/match-list/match-list.component';
 import { CompetitionDetailComponent } from './competition/competition-detail/competition-detail.component';
 import { SeasonDropdownListComponent } from './season/season-dropdown-list/season-dropdown-list.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AccountInfoComponent } from './account/account-info/account-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './auth/login/login.component';
     MatchListComponent,
     CompetitionDetailComponent,
     SeasonDropdownListComponent,
-    LoginComponent
+    LoginComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,
