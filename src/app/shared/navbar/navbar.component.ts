@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-// import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {Constants} from "../../common/constants";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  // imports: [NgbNavModule],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   isMenuCollapsed: boolean = true;
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
+
+  isShow() {
+    return !!localStorage.getItem(Constants.ACCESS_TOKEN);
+  }
+
+  routeLinkCompetitionList() {
+    return Constants.ROUTE_PATH.COMPETITION_LIST;
+  }
 
 }

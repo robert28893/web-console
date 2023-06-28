@@ -1,10 +1,8 @@
-<app-navbar></app-navbar>
-
-<h2>Giải đấu</h2>
-<div *ngFor="let competition of this.competitions | async">
-  <h3>
+<h3>Giải đấu</h3>
+<ul class="list-group" *ngFor="let competition of this.competitions | async">
+  <li class="list-group-item">
     <a [title]="competition.name" [routerLink]="['/competition/competition-detail']">
       {{competition.name}}
     </a>
-  </h3>
-</div>
+  </li>
+</ul>
