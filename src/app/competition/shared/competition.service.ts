@@ -8,7 +8,10 @@ import {Observable} from "rxjs";
 export class CompetitionService {
   competitions = [
     new CompetitionModel(
-      1, 'nha', 'male', 'england'
+      1, 'Premier League', 'male', 'england'
+    ),
+    new CompetitionModel(
+      2, 'LaLiga', 'male', 'england'
     )
   ];
 

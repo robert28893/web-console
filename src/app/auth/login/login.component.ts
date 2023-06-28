@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
+  isFormSubmitted: boolean = false;
 
   constructor(
     private router: Router,
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.isFormSubmitted = true;
     if (!this.username.trim() || !this.password.trim()) {
       return;
     }
