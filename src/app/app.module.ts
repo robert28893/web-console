@@ -10,6 +10,8 @@ import { CompetitionDetailComponent } from './competition/competition-detail/com
 import { SeasonDropdownListComponent } from './season/season-dropdown-list/season-dropdown-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AccountInfoComponent } from './account/account-info/account-info.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { AccountInfoComponent } from './account/account-info/account-info.compon
     CompetitionDetailComponent,
     SeasonDropdownListComponent,
     LoginComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

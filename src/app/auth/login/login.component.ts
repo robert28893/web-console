@@ -19,6 +19,7 @@ export class LoginComponent {
   login() {
     console.log("username: " + this.username + ", password: " + this.password)
     localStorage.setItem(Constants.ACCESS_TOKEN, "accessToken")
-    this.router.parseUrl(Constants.ROUTE_PATH.COMPETITION_LIST)
+    localStorage.setItem(Constants.ACCOUNT_INFO, JSON.stringify({"fullName": "fullName1"}))
+    this.router.navigateByUrl(Constants.ROUTE_PATH.COMPETITION_LIST)
   }
 }

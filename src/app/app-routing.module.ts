@@ -15,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: Constants.ROUTE_PATH.COMPETITION_DETAIL,
-    component: CompetitionDetailComponent
+    component: CompetitionDetailComponent,
+    canActivate: [authGuard]
   },
   // {
   //   path: 'match/match-list',
