@@ -23,8 +23,4 @@ export class CompetitionListComponent implements OnInit{
   ngOnInit(): void {
     this.competitions = this.competitionService.getCompetitions();
   }
-
-    routerLinkCompetitionDetail(id: number) {
-        return this.router.createUrlTree([Constants.ROUTE_PATH.COMPETITION_DETAIL, id]).toString()
-    }
 }

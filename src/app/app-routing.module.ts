@@ -6,23 +6,24 @@ import {LoginComponent} from "./component/auth/login/login.component";
 import {authGuard} from "./guard/auth.guard";
 import {Constants} from "./common/constants";
 import {RegisterComponent} from "./component/auth/register/register.component";
+import {CompetitionComponent} from "./component/competition/competition/competition.component";
 
 const routes: Routes = [
   {
-    path: Constants.ROUTE_PATH.COMPETITION_LIST,
-    component: CompetitionListComponent,
-    canActivate: [authGuard]
+    path: Constants.ROUTE_PATH.COMPETITION,
+    component: CompetitionComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: ':id',
+        component: CompetitionDetailComponent
+      },
+      {
+        path: '',
+        component: CompetitionListComponent
+      }
+    ]
   },
-  {
-    path: Constants.ROUTE_PATH.COMPETITION_DETAIL,
-    component: CompetitionDetailComponent,
-    canActivate: [authGuard]
-  },
-  // {
-  //   path: 'match/match-list',
-  //   component: MatchListComponent,
-  //   canActivate: [authGuard]
-  // },
   {
     path: Constants.ROUTE_PATH.AUTH_LOGIN,
     component: LoginComponent
@@ -33,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: Constants.ROUTE_PATH.COMPETITION_LIST,
+    redirectTo: Constants.ROUTE_PATH.COMPETITION,
     pathMatch: 'full'
   }
 ];

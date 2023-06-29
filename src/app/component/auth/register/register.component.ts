@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -8,14 +9,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
-  email: string = '';
-  password: string = '';
-  rePassword: string = '';
-  isFormSubmitted: boolean = false;
+  registerForm: FormGroup;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
   ) {
+    this.registerForm = this.createForm();
   }
 
   routerLinkLogin() {
@@ -24,12 +24,33 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(): void {
     if(localStorage.getItem(Constants.ACCESS_TOKEN)) {
-      this.router.navigateByUrl(Constants.ROUTE_PATH.COMPETITION_LIST)
+      this.router.navigateByUrl('')
     }
   }
 
   register() {
-    this.isFormSubmitted = true;
+    let formValue = this.registerForm.value;
+    console.log(formValue)
     //TODO: handle register
+  }
+
+  get emailFc() {
+    return this.registerForm.get('email')!;
+  }
+
+  get passwordFc() {
+    return this.registerForm.get('password')!;
+  }
+
+  get rePasswordFc() {
+    return this.registerForm.get('rePassword')!;
+  }
+
+  createForm() {
+    return this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
+      rePassword: ['', Validators.compose([Validators.required])],
+    })
   }
 }

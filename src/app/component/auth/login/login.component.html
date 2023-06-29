@@ -6,28 +6,32 @@
       <div class="mb-3">
         <h3 class="mt-3 mb-3 text-center">Đăng nhập</h3>
 
-        <form (ngSubmit)="login()" #loginForm="ngForm" class="needs-validation"
-              [class.was-validated]="isFormSubmitted">
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+<!--              [class.was-validated]="isFormSubmitted">-->
           <div class="mb-3">
             <label for="username" class="form-label">Tên đăng nhập*</label>
-            <input name="username" type="text" class="form-control" id="username" [(ngModel)]="username"
-                   required #uname="ngModel"/>
-            <div *ngIf="uname.errors?.['required']" class="invalid-feedback">
-              Tên đăng nhập không hợp lệ
+            <input type="text" class="form-control" id="username" formControlName="username"
+                   required [ngClass]="{
+                   'is-invalid': usernameFc.touched && usernameFc.errors,
+                   'is-valid': usernameFc.valid}"/>
+            <div *ngIf="usernameFc.touched && usernameFc.errors" class="invalid-feedback">
+              <div *ngIf="usernameFc.errors?.['required']">Tên đăng nhập không hợp lệ</div>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="password" class="form-label">Mật khẩu*</label>
-            <input id="password" name="password" type="password" class="form-control" [(ngModel)]="password"
-                   required #pass="ngModel"/>
-            <div *ngIf="pass.errors?.['required']" class="invalid-feedback">
-              Mật khẩu không hợp lệ
+            <input id="password" formControlName="password" type="password" class="form-control"
+                   required [ngClass]="{
+                   'is-invalid': passwordFc.touched && passwordFc.errors,
+                   'is-valid': passwordFc.valid}"/>
+            <div *ngIf="passwordFc.touched && passwordFc.errors" class="invalid-feedback">
+              <div *ngIf="passwordFc.errors?.['required']" >Mật khẩu không hợp lệ</div>
             </div>
           </div>
 
           <div class="mb-3">
-            <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Đăng nhập</button>
           </div>
           <div class="text-center">Bạn chưa có tài khoản? <a [routerLink]="routeLinkRegister()">Đăng ký</a></div>
         </form>

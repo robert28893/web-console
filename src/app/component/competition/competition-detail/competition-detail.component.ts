@@ -13,7 +13,6 @@ import {SeasonModel} from "../../../model/season/season.model";
 export class CompetitionDetailComponent implements OnInit {
   competition?: CompetitionModel;
   selectedSeason?: SeasonModel;
-  routeLink = Constants.ROUTE_PATH.COMPETITION_LIST;
   activeTab: number = 1;
 
   constructor(

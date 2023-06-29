@@ -13,6 +13,7 @@ import { AccountInfoComponent } from './component/account/account-info/account-i
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './component/shared/navbar/navbar.component';
 import { RegisterComponent } from './component/auth/register/register.component';
+import { CompetitionComponent } from './component/competition/competition/competition.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegisterComponent } from './component/auth/register/register.component'
     LoginComponent,
     AccountInfoComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    CompetitionComponent
   ],
   imports: [
     BrowserModule,

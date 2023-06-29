@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   routeLinkCompetitionList() {
-    return "/" + Constants.ROUTE_PATH.COMPETITION_LIST;
+    return "/" + Constants.ROUTE_PATH.COMPETITION;
   }
 
 }

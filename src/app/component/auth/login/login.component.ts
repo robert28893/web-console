@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -8,30 +9,51 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string = '';
-  password: string = '';
-  isFormSubmitted: boolean = false;
+  // username: string = '';
+  // password: string = '';
+  // isFormSubmitted: boolean = false;
+  loginForm: FormGroup;
 
   constructor(
     private router: Router,
+    private formBuilder: FormBuilder
   ) {
+    this.loginForm = this.createForm();
   }
 
   ngOnInit(): void {
     if(localStorage.getItem(Constants.ACCESS_TOKEN)) {
-      this.router.navigateByUrl(Constants.ROUTE_PATH.COMPETITION_LIST)
+      this.router.navigateByUrl('')
+      return
     }
   }
 
   login() {
-    this.isFormSubmitted = true;
-    if (!this.username.trim() || !this.password.trim()) {
+    // this.isFormSubmitted = true;
+    let formValue = this.loginForm.value;
+    if (!formValue.username.trim() || !formValue.password.trim()) {
       return;
     }
-    console.log("username: " + this.username + ", password: " + this.password)
+    console.log(formValue)
+    // TODO: call api login to get access token
     localStorage.setItem(Constants.ACCESS_TOKEN, "accessToken")
-    localStorage.setItem(Constants.ACCOUNT_INFO, JSON.stringify({"fullName": "fullName1"}))
-    this.router.navigateByUrl(Constants.ROUTE_PATH.COMPETITION_LIST)
+    localStorage.setItem(Constants.ACCOUNT_INFO, JSON.stringify({"fullName": "Hoang Anh Phuong"}))
+    this.router.navigateByUrl('')
+  }
+
+  createForm() {
+    return this.formBuilder.group({
+      username: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
+    })
+  }
+
+  get usernameFc() {
+    return this.loginForm.get('username')!;
+  }
+
+  get passwordFc() {
+    return this.loginForm.get('password')!;
   }
 
   routeLinkRegister() {
