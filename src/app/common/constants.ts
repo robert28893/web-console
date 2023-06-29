@@ -4,7 +4,8 @@ export const Constants = {
 
   ROUTE_PATH: {
     AUTH_LOGIN: 'auth/login',
+    AUTH_REGISTER: 'auth/register',
     COMPETITION_LIST: 'competition/competition-list',
-    COMPETITION_DETAIL: 'competition/competition-detail',
+    COMPETITION_DETAIL: 'competition/competition-detail/:id',
   },
 }

@@ -1,0 +1,10 @@
+<div ngbDropdown class="dropdown">
+  <button type="button" class="btn btn-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>
+    {{accountInfo.fullName}}
+  </button>
+  <ul ngbDropdownMenu class="dropdown-menu">
+    <li>
+      <a role="button" class="dropdown-item" ngbDropdownItem (click)="logout()">Đăng xuất</a>
+    </li>
+  </ul>
+</div>

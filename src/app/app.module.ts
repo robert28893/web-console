@@ -4,14 +4,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CompetitionListComponent } from './competition/competition-list/competition-list.component';
-import { MatchListComponent } from './match/match-list/match-list.component';
-import { CompetitionDetailComponent } from './competition/competition-detail/competition-detail.component';
-import { SeasonDropdownListComponent } from './season/season-dropdown-list/season-dropdown-list.component';
-import { LoginComponent } from './auth/login/login.component';
-import { AccountInfoComponent } from './account/account-info/account-info.component';
+import { CompetitionListComponent } from './component/competition/competition-list/competition-list.component';
+import { MatchListComponent } from './component/match/match-list/match-list.component';
+import { CompetitionDetailComponent } from './component/competition/competition-detail/competition-detail.component';
+import { SeasonDropdownListComponent } from './component/season/season-dropdown-list/season-dropdown-list.component';
+import { LoginComponent } from './component/auth/login/login.component';
+import { AccountInfoComponent } from './component/account/account-info/account-info.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavbarComponent } from './component/shared/navbar/navbar.component';
+import { RegisterComponent } from './component/auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     SeasonDropdownListComponent,
     LoginComponent,
     AccountInfoComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

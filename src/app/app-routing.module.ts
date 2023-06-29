@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {CompetitionListComponent} from "./competition/competition-list/competition-list.component";
-import {MatchListComponent} from "./match/match-list/match-list.component";
-import {CompetitionDetailComponent} from "./competition/competition-detail/competition-detail.component";
-import {LoginComponent} from "./auth/login/login.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CompetitionListComponent} from "./component/competition/competition-list/competition-list.component";
+import {CompetitionDetailComponent} from "./component/competition/competition-detail/competition-detail.component";
+import {LoginComponent} from "./component/auth/login/login.component";
 import {authGuard} from "./guard/auth.guard";
 import {Constants} from "./common/constants";
+import {RegisterComponent} from "./component/auth/register/register.component";
 
 const routes: Routes = [
   {
@@ -20,11 +20,16 @@ const routes: Routes = [
   },
   // {
   //   path: 'match/match-list',
-  //   component: MatchListComponent
+  //   component: MatchListComponent,
+  //   canActivate: [authGuard]
   // },
   {
     path: Constants.ROUTE_PATH.AUTH_LOGIN,
     component: LoginComponent
+  },
+  {
+    path: Constants.ROUTE_PATH.AUTH_REGISTER,
+    component: RegisterComponent
   },
   {
     path: '**',

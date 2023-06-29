@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <h3 class="mb-3">Giải đấu</h3>
+  <ul class="list-group list-group-flush" *ngFor="let competition of this.competitions | async">
+    <li class="list-group-item">
+      <a [title]="competition.name" [routerLink]="['../competition-detail', competition.id]">
+        {{competition.name}}
+      </a>
+    </li>
+  </ul>
+</div>
+

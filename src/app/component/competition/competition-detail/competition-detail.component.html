@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div *ngIf="competition">
+    <div class="row" >
+      <div class="col">
+        <h3>{{this.competition.name}}</h3>
+      </div>
+      <div class="col">
+        <app-season-dropdown-list [competition]="competition" (seasonChangeEvent)="changeSeason($event)"></app-season-dropdown-list>
+      </div>
+    </div>
+
+    <ul ngbNav class="nav nav-tabs" #nav="ngbNav">
+      <li ngbNavItem class="nav-item">
+        <button class="nav-link" ngbNavLink>Kết quả</button>
+        <ng-template ngbNavContent>
+          <app-match-list [competition]="competition" [season]="selectedSeason"></app-match-list>
+        </ng-template>
+      </li>
+      <li ngbNavItem class="nav-item">
+        <button class="nav-link" ngbNavLink>Bảng xếp hạng</button>
+        <ng-template ngbNavContent>
+          <p>
+            Test
+          </p>
+        </ng-template>
+      </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="mt-3"></div>
+  </div>
+</div>

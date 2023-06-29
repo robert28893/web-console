@@ -1,0 +1,8 @@
+<div class="row mb-3">
+  <label for="select" class="col-form-label col-md-2 text-end">Mùa giải</label>
+  <div class="col-md-2">
+    <select id="select" [(ngModel)]="selectedSeason" class="form-select" (ngModelChange)="onChangeSeason($event)">
+      <option *ngFor="let s of seasons | async" [ngValue]="s">{{s.name}}</option>
+    </select>
+  </div>
+</div>

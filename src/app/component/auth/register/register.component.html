@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-md-4">
+      <h3 class="mb-3 mt-3 text-center">Đăng ký</h3>
+      <form (ngSubmit)="register()" class="needs-validation"
+            [class.was-validated]="isFormSubmitted">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email*</label>
+          <input type="email" name="email" id="email" class="form-control" [(ngModel)]="email" required #em="ngModel"/>
+          <div class="invalid-feedback" *ngIf="em.errors?.['required']">Email không hợp lệ</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Mật khẩu*</label>
+          <input type="email" name="password" id="password" class="form-control" [(ngModel)]="password" required #pass="ngModel"/>
+          <div class="invalid-feedback" *ngIf="pass.errors?.['required']">Mật khẩu không hợp lệ</div>
+        </div>
+        <div class="mb-3">
+          <label for="repass" class="form-label">Nhập lại mật khẩu*</label>
+          <input type="email" name="password" id="repass" class="form-control" [(ngModel)]="rePassword" required #repass="ngModel"/>
+          <div class="invalid-feedback" *ngIf="repass.errors?.['required']">Nhập lại mật khẩu không hợp lệ</div>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
+        </div>
+        <div class="text-center">Đã có tài khoản? <a [routerLink]="routerLinkLogin()">Đăng nhập</a></div>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
