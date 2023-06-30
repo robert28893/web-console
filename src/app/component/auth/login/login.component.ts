@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../../service/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
   ) {
     this.loginForm = this.createForm();
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem(Constants.ACCESS_TOKEN)) {
+    if (localStorage.getItem(Constants.ACCESS_TOKEN)) {
       this.router.navigateByUrl('')
       return
     }
@@ -35,10 +37,17 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(formValue)
-    // TODO: call api login to get access token
-    localStorage.setItem(Constants.ACCESS_TOKEN, "accessToken")
-    localStorage.setItem(Constants.ACCOUNT_INFO, JSON.stringify({"fullName": "Hoang Anh Phuong"}))
-    this.router.navigateByUrl('')
+    // call api login to get access token
+    this.authService.login(formValue.username.trim(), formValue.password.trim())
+      .subscribe(value => {
+        localStorage.setItem(Constants.ACCESS_TOKEN, value.access_token)
+        this.authService.getProfile().subscribe(
+          value => {
+            localStorage.setItem(Constants.ACCOUNT_INFO, JSON.stringify(value))
+            this.router.navigateByUrl('')
+          }
+        )
+      })
   }
 
   createForm() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, DoCheck, OnInit} from '@angular/core';
 import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
 
@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   templateUrl: './account-info.component.html',
   styleUrls: ['./account-info.component.css']
 })
-export class AccountInfoComponent implements OnInit {
+export class AccountInfoComponent implements DoCheck {
   accountInfo: any
 
   constructor(
@@ -15,12 +15,24 @@ export class AccountInfoComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-    this.accountInfo = JSON.parse(localStorage.getItem(Constants.ACCOUNT_INFO) || '{}');
-  }
+  // ngOnInit(): void {
+  //   this.accountInfo = JSON.parse(localStorage.getItem(Constants.ACCOUNT_INFO) || '{}');
+  // }
 
   logout(): void {
     localStorage.clear();
     this.router.navigateByUrl(Constants.ROUTE_PATH.AUTH_LOGIN);
+  }
+
+  // ngAfterContentInit(): void {
+  //   this.accountInfo = JSON.parse(localStorage.getItem(Constants.ACCOUNT_INFO) || '{}');
+  // }
+  //
+  // ngAfterViewInit(): void {
+  //   this.accountInfo = JSON.parse(localStorage.getItem(Constants.ACCOUNT_INFO) || '{}');
+  // }
+
+  ngDoCheck(): void {
+    this.accountInfo = JSON.parse(localStorage.getItem(Constants.ACCOUNT_INFO) || '{}');
   }
 }
