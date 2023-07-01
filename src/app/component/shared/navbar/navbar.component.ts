@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Constants} from "../../../common/constants";
+import {StorageService} from "../../../service/storage/storage.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +10,17 @@ import {Constants} from "../../../common/constants";
 export class NavbarComponent implements OnInit {
   isMenuCollapsed: boolean = true;
 
-  constructor() {
+  constructor(
+    private storageService: StorageService,
+  ) {
   }
 
   ngOnInit(): void {
+    console.log('init navbar')
   }
 
   isShow() {
-    return !!localStorage.getItem(Constants.ACCESS_TOKEN);
+    return !!this.storageService.getAccessToken();
   }
 
   routeLinkCompetitionList() {

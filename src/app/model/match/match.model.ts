@@ -7,7 +7,7 @@ export class MatchModel {
   public homeScore: number
   public awayScore: number
   public matchDate: string
-  public kickoff: string
+  public kickOff: string
 
   constructor(
     id: number,
@@ -18,7 +18,7 @@ export class MatchModel {
     homeScore: number,
     awayScore: number,
     matchDate: string,
-    kickoff: string
+    kickOff: string
   ) {
     this.id = id
     this.homeTeamId = homeTeamId
@@ -28,6 +28,6 @@ export class MatchModel {
     this.homeScore = homeScore
     this.awayScore = awayScore
     this.matchDate = matchDate
-    this.kickoff = kickoff
+    this.kickOff = kickOff
   }
 }

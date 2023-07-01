@@ -19,9 +19,11 @@ export class CompetitionDetailComponent implements OnInit {
     private competitionService: CompetitionService,
     private route: ActivatedRoute,
   ) {
+    console.log('constructor competition-detail')
   }
 
   ngOnInit(): void {
+    console.log("init competition-detail")
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.competitionService.getCompetition(id).subscribe(competition => this.competition = competition);
   }

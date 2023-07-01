@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {StorageService} from "../../../service/storage/storage.service";
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit{
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
+    private storageService: StorageService,
   ) {
     this.registerForm = this.createForm();
   }
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem(Constants.ACCESS_TOKEN)) {
+    if(this.storageService.getAccessToken()) {
       this.router.navigateByUrl('')
     }
   }

@@ -3,6 +3,8 @@ import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../service/auth/auth.service";
+import {EventService} from "../../../service/event/event.service";
+import {StorageService} from "../../../service/storage/storage.service";
 
 @Component({
   selector: 'app-login',
@@ -10,21 +12,20 @@ import {AuthService} from "../../../service/auth/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // username: string = '';
-  // password: string = '';
-  // isFormSubmitted: boolean = false;
   loginForm: FormGroup;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private eventService: EventService,
+    private storageService: StorageService,
   ) {
     this.loginForm = this.createForm();
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem(Constants.ACCESS_TOKEN)) {
+    if (this.storageService.getAccessToken()) {
       this.router.navigateByUrl('')
       return
     }
@@ -40,11 +41,12 @@ export class LoginComponent implements OnInit {
     // call api login to get access token
     this.authService.login(formValue.username.trim(), formValue.password.trim())
       .subscribe(value => {
-        localStorage.setItem(Constants.ACCESS_TOKEN, value.access_token)
+        this.storageService.setAuthToken(value)
         this.authService.getProfile().subscribe(
           value => {
-            localStorage.setItem(Constants.ACCOUNT_INFO, JSON.stringify(value))
+            this.storageService.setAccountInfo(value)
             this.router.navigateByUrl('')
+            this.eventService.sendProfileEvent('')
           }
         )
       })

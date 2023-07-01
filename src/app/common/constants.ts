@@ -1,5 +1,5 @@
 export const Constants = {
-  ACCESS_TOKEN: 'accessToken',
+  AUTH_TOKEN: 'authToken',
   ACCOUNT_INFO: 'accountInfo',
 
   ROUTE_PATH: {
