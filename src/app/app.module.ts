@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './component/shared/navbar/navbar.component';
 import { RegisterComponent } from './component/auth/register/register.component';
 import { CompetitionComponent } from './component/competition/competition/competition.component';
+import {Constants} from "./common/constants";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { CompetitionComponent } from './component/competition/competition/compet
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [Constants.httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
