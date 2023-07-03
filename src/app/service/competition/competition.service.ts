@@ -42,11 +42,12 @@ export class CompetitionService {
           return competitions;
           // return [new CompetitionModel(
           //   1, 'Premier League', 'male', 'england')]
-        }),
-        catchError(err => {
-          console.log(err)
-          return []
         })
+        // ,
+        // catchError(err => {
+        //   console.log(err)
+        //   return []
+        // })
       );
   }
 

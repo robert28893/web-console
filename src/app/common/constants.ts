@@ -1,5 +1,5 @@
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {HandlingUnauthorizedInterceptor} from "../interceptor/handling-unauthorized.interceptor";
+import {HandlingHttpErrorInterceptor} from "../interceptor/handling-http-error-interceptor.service";
 
 export const Constants = {
   AUTH_TOKEN: 'authToken',
@@ -12,6 +12,6 @@ export const Constants = {
   },
 
   httpInterceptorProviders: [
-    {provide: HTTP_INTERCEPTORS, useClass: HandlingUnauthorizedInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HandlingHttpErrorInterceptor, multi: true},
   ]
 }

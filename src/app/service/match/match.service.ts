@@ -64,10 +64,10 @@ export class MatchService {
         }
         return matches
       }),
-    catchError(err => {
-      console.log(err)
-      return []
-    })
+    // catchError(err => {
+    //   console.log(err)
+    //   return []
+    // })
   )
 
     return new Observable<MatchModel[]>(subscriber => {

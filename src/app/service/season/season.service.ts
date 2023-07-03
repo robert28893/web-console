@@ -38,10 +38,10 @@ export class SeasonService {
         }
         return seasons;
       }),
-      catchError(err => {
-        console.log(err)
-        return []
-      })
+      // catchError(err => {
+      //   console.log(err)
+      //   return []
+      // })
     )
     // return new Observable<SeasonModel[]>(subscriber => subscriber.next(this.seasons))
   }
