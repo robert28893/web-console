@@ -11,7 +11,17 @@
                  'is-invalid': emailFc.touched && emailFc.errors,
                  'is-valid': emailFc.valid}"/>
           <div *ngIf="emailFc.touched && emailFc.errors" class="invalid-feedback">
-            <div *ngIf="emailFc.errors?.['required']">Email không hợp lệ</div>
+            <div>Email không hợp lệ</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Họ tên*</label>
+          <input type="fullName" id="fullName" class="form-control" formControlName="fullName"
+                 required [ngClass]="{
+                 'is-invalid': fullNameFc.touched && fullNameFc.errors,
+                 'is-valid': fullNameFc.valid}"/>
+          <div *ngIf="fullNameFc.touched && fullNameFc.errors" class="invalid-feedback">
+            <div *ngIf="fullNameFc.errors?.['required']">Họ tên không hợp lệ</div>
           </div>
         </div>
         <div class="mb-3">

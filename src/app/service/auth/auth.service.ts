@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {Constants} from "../../common/constants";
 import {map, Observable} from "rxjs";
 import {AccountModel} from "../../model/account/account.model";
 import {StorageService} from "../storage/storage.service";
@@ -32,6 +31,12 @@ export class AuthService {
       let obj = value.object
       return {id: obj.id, email: obj.email, username: obj.username, fullName: obj.fullName}
     }))
+  }
+
+  register(email: string, fullName: string, password: string) {
+    return this.httpClient.post<any>(environment.apiUrl + '/auth-service/account/register',
+      {email: email, fullName: fullName, password: password},
+      this.getHeaders())
   }
 
   getLoginHeaders() {

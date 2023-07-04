@@ -3,6 +3,8 @@ import {Constants} from "../../../common/constants";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {StorageService} from "../../../service/storage/storage.service";
+import {ToastService} from "../../../service/toast/toast.service";
+import {AuthService} from "../../../service/auth/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -16,6 +18,8 @@ export class RegisterComponent implements OnInit{
     private router: Router,
     private formBuilder: FormBuilder,
     private storageService: StorageService,
+    private toastService: ToastService,
+    private authService: AuthService,
   ) {
     this.registerForm = this.createForm();
   }
@@ -33,11 +37,19 @@ export class RegisterComponent implements OnInit{
   register() {
     let formValue = this.registerForm.value;
     console.log(formValue)
-    //TODO: handle register
+    if (formValue.password !== formValue.rePassword) {
+      this.toastService.show('Mật khẩu và Nhập lại mật khẩu không trùng khớp', 5000)
+      return
+    }
+    this.authService.register(formValue.email, formValue.fullName, formValue.password)
   }
 
   get emailFc() {
     return this.registerForm.get('email')!;
+  }
+
+  get fullNameFc() {
+    return this.registerForm.get('fullName')!;
   }
 
   get passwordFc() {
@@ -50,7 +62,8 @@ export class RegisterComponent implements OnInit{
 
   createForm() {
     return this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      fullName: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
       rePassword: ['', Validators.compose([Validators.required])],
     })
