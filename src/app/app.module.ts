@@ -17,6 +17,7 @@ import { RegisterComponent } from './component/auth/register/register.component'
 import { CompetitionComponent } from './component/competition/competition/competition.component';
 import {Constants} from "./common/constants";
 import { ToastComponent } from './component/shared/toast/toast.component';
+import { AccountProfileModalComponent } from './component/account/account-profile-modal/account-profile-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ToastComponent } from './component/shared/toast/toast.component';
     NavbarComponent,
     RegisterComponent,
     CompetitionComponent,
-    ToastComponent
+    ToastComponent,
+    AccountProfileModalComponent
   ],
   imports: [
     BrowserModule,

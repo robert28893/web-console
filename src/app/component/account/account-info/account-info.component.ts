@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {EventService} from "../../../service/event/event.service";
 import {Subscription} from "rxjs";
 import {StorageService} from "../../../service/storage/storage.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AccountProfileModalComponent} from "../account-profile-modal/account-profile-modal.component";
 
 @Component({
   selector: 'app-account-info',
@@ -18,6 +20,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
     private router: Router,
     private eventService: EventService,
     private storageService: StorageService,
+    private modalService: NgbModal,
   ) {
     console.log('constructor account-info')
     this.profileEventSub = eventService.getProfileEvent().subscribe(() => {
@@ -34,6 +37,11 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
   logout(): void {
     this.storageService.clear();
     this.router.navigateByUrl(Constants.ROUTE_PATH.AUTH_LOGIN);
+  }
+
+  openProfileModal(): void {
+    const modalRef = this.modalService.open(AccountProfileModalComponent);
+    modalRef.componentInstance.accountInfo = this.accountInfo;
   }
 
   ngOnDestroy(): void {

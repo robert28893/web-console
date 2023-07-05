@@ -41,7 +41,9 @@ export class RegisterComponent implements OnInit{
       this.toastService.show('Mật khẩu và Nhập lại mật khẩu không trùng khớp', 5000)
       return
     }
-    this.authService.register(formValue.email, formValue.fullName, formValue.password)
+    this.authService.register(formValue.email, formValue.fullName, formValue.password).subscribe(() => {
+      this.router.navigateByUrl(Constants.ROUTE_PATH.AUTH_LOGIN)
+    })
   }
 
   get emailFc() {
