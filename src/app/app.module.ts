@@ -18,6 +18,7 @@ import { CompetitionComponent } from './component/competition/competition/compet
 import {Constants} from "./common/constants";
 import { ToastComponent } from './component/shared/toast/toast.component';
 import { AccountProfileModalComponent } from './component/account/account-profile-modal/account-profile-modal.component';
+import { StandingsComponent } from './component/standings/standings/standings.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AccountProfileModalComponent } from './component/account/account-profil
     RegisterComponent,
     CompetitionComponent,
     ToastComponent,
-    AccountProfileModalComponent
+    AccountProfileModalComponent,
+    StandingsComponent
   ],
   imports: [
     BrowserModule,

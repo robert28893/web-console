@@ -19,9 +19,7 @@
       <li ngbNavItem class="nav-item">
         <button class="nav-link" ngbNavLink>Bảng xếp hạng</button>
         <ng-template ngbNavContent>
-          <p>
-            Test
-          </p>
+          <app-standings [competition]="competition" [season]="selectedSeason"></app-standings>
         </ng-template>
       </li>
     </ul>
