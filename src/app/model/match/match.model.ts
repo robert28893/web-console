@@ -1,33 +1,26 @@
-export class MatchModel {
-  public id: number
-  public homeTeamId: number
-  public homeTeamName: string
-  public awayTeamId: number
-  public awayTeamName: string
-  public homeScore: number
-  public awayScore: number
-  public matchDate: string
-  public kickOff: string
+import {CompetitionModel} from "../competition/competition.model";
+import {StadiumModel} from "../stadium/stadium.model";
+import {SeasonModel} from "../season/season.model";
+import {TeamModel} from "../team/team.model";
+import {ManagerModel} from "../manager/manager.model";
+import {PlayerModel} from "../player/player.model";
 
+export class MatchModel {
   constructor(
-    id: number,
-    homeTeamId: number,
-    homeTeamName: string,
-    awayTeamId: number,
-    awayTeamName: string,
-    homeScore: number,
-    awayScore: number,
-    matchDate: string,
-    kickOff: string
+    public id: number,
+    public homeTeam: TeamModel,
+    public awayTeam: TeamModel,
+    public homeScore: number,
+    public awayScore: number,
+    public matchDate: string,
+    public kickOff: string,
+    public competition?: CompetitionModel,
+    public season?: SeasonModel,
+    public stadium?: StadiumModel,
+    public homeTeamManagers?: ManagerModel[],
+    public awayTeamManagers?: ManagerModel[],
+    public homeTeamLineups?: PlayerModel[],
+    public awayTeamLineups?: PlayerModel[],
   ) {
-    this.id = id
-    this.homeTeamId = homeTeamId
-    this.homeTeamName = homeTeamName
-    this.awayTeamId = awayTeamId
-    this.awayTeamName = awayTeamName
-    this.homeScore = homeScore
-    this.awayScore = awayScore
-    this.matchDate = matchDate
-    this.kickOff = kickOff
   }
 }

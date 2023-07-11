@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MatchModel} from "../../model/match/match.model";
-import {catchError, map, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../storage/storage.service";
 import {environment} from "../../../environments/environment";
@@ -13,10 +13,14 @@ export class MatchService {
   matches = [
     new MatchModel(
       1,
-      2,
-      "MU",
-      3,
-      "LIV",
+      {
+        id: 2,
+        name: "MU"
+      },
+      {
+        id: 3,
+        name: "LIV"
+      },
       3,
       1,
       "11/03/2019",
@@ -24,10 +28,14 @@ export class MatchService {
     ),
     new MatchModel(
       2,
-      2,
-      "ARS",
-      3,
-      "MC",
+      {
+        id: 2,
+        name: "ARS"
+      },
+      {
+        id: 3,
+        name: "MC"
+      },
       1,
       1,
       "11/03/2019",
@@ -52,11 +60,15 @@ export class MatchService {
         for (let obj of value.object.data) {
           matches.push({
             id: obj.id,
-            homeTeamId: obj.homeTeamId,
-            homeTeamName: obj.homeTeamName,
+            homeTeam: {
+              id: obj.homeTeamId,
+              name: obj.homeTeamName
+            },
             homeScore: obj.homeScore,
-            awayTeamId: obj.awayTeamId,
-            awayTeamName: obj.awayTeamName,
+            awayTeam: {
+              id: obj.awayTeamId,
+              name: obj.awayTeamName,
+            },
             awayScore: obj.awayScore,
             matchDate: obj.matchDate,
             kickOff: obj.kickOff,
@@ -64,11 +76,11 @@ export class MatchService {
         }
         return matches
       }),
-    // catchError(err => {
-    //   console.log(err)
-    //   return []
-    // })
-  )
+      // catchError(err => {
+      //   console.log(err)
+      //   return []
+      // })
+    )
 
     return new Observable<MatchModel[]>(subscriber => {
       subscriber.next(this.matches)
