@@ -9,6 +9,7 @@ export const Constants = {
     AUTH_LOGIN: 'auth/login',
     AUTH_REGISTER: 'auth/register',
     COMPETITION: 'competition',
+    MATCH: 'match',
   },
 
   httpInterceptorProviders: [

@@ -7,6 +7,7 @@ import {authGuard} from "./guard/auth.guard";
 import {Constants} from "./common/constants";
 import {RegisterComponent} from "./component/auth/register/register.component";
 import {CompetitionComponent} from "./component/competition/competition/competition.component";
+import {MatchDetailComponent} from "./component/match/match-detail/match-detail.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
         component: CompetitionListComponent
       }
     ]
+  },
+  {
+    path: Constants.ROUTE_PATH.MATCH + "/:id",
+    component: MatchDetailComponent
   },
   {
     path: Constants.ROUTE_PATH.AUTH_LOGIN,

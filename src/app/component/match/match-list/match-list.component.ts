@@ -3,6 +3,7 @@ import {MatchModel} from "../../../model/match/match.model";
 import {CompetitionModel} from "../../../model/competition/competition.model";
 import {SeasonModel} from "../../../model/season/season.model";
 import {MatchService} from "../../../service/match/match.service";
+import {Constants} from "../../../common/constants";
 
 @Component({
   selector: 'app-match-list',
@@ -24,6 +25,10 @@ export class MatchListComponent implements OnInit, OnChanges{
     this.getMatches();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getMatches();
+  }
+
   getMatches() {
     if (this.competition && this.season) {
       this.matchService.getMatches(this.competition.id, this.season.id).subscribe(value => {
@@ -32,8 +37,8 @@ export class MatchListComponent implements OnInit, OnChanges{
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getMatches();
+  routeLinkMatchDetail(matchId: number) {
+    return "/" + Constants.ROUTE_PATH.MATCH + "/" + matchId
   }
 
 }

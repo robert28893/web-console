@@ -20,6 +20,7 @@ import { ToastComponent } from './component/shared/toast/toast.component';
 import { AccountProfileModalComponent } from './component/account/account-profile-modal/account-profile-modal.component';
 import { StandingsComponent } from './component/standings/standings/standings.component';
 import { MatchDetailComponent } from './component/match/match-detail/match-detail.component';
+import { LineupsComponent } from './component/lineups/lineups/lineups.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatchDetailComponent } from './component/match/match-detail/match-detai
     ToastComponent,
     AccountProfileModalComponent,
     StandingsComponent,
-    MatchDetailComponent
+    MatchDetailComponent,
+    LineupsComponent
   ],
   imports: [
     BrowserModule,

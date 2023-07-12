@@ -1,7 +1,7 @@
 export class StadiumModel {
   constructor(
     public id: number,
-    public name: number,
+    public name: string,
   ) {
   }
 }

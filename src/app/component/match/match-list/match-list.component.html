@@ -6,7 +6,7 @@
       <th>Trận đấu</th>
       <th>Kết quả</th>
     </tr>
-    <tr *ngFor="let match of this.matches">
+    <tr *ngFor="let match of this.matches" [routerLink]="routeLinkMatchDetail(match.id)" role="button">
       <td>
         <div>{{match.matchDate}}</div>
         <div>{{match.kickOff}}</div>

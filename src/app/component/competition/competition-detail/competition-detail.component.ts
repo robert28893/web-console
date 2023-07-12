@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CompetitionModel} from "../../../model/competition/competition.model";
 import {CompetitionService} from "../../../service/competition/competition.service";
-import {Constants} from "../../../common/constants";
 import {SeasonModel} from "../../../model/season/season.model";
 
 @Component({

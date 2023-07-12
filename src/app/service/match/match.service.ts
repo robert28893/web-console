@@ -87,6 +87,44 @@ export class MatchService {
     })
   }
 
+  getMatch(id: number): Observable<MatchModel> {
+    return this.httpClient.get<any>(environment.apiUrl + '/soccer-service/match/' + id,
+      this.getHeaders()
+    ).pipe(
+      map(value => {
+        let obj = value.object
+        return {
+          id: obj.id,
+          homeTeam: {
+            id: obj.homeTeamId,
+            name: obj.homeTeamName
+          },
+          homeScore: obj.homeScore,
+          awayTeam: {
+            id: obj.awayTeamId,
+            name: obj.awayTeamName,
+          },
+          awayScore: obj.awayScore,
+          matchDate: obj.matchDate,
+          kickOff: obj.kickOff,
+          competition: {
+            ...obj.competition
+          },
+          season: {
+            ...obj.season
+          },
+          stadium: {
+            ...obj.stadium
+          },
+          homeTeamManagers: obj.homeTeamManagers,
+          awayTeamManagers: obj.awayTeamManagers,
+          homeTeamLineups: obj.homeTeamLineups,
+          awayTeamLineups: obj.awayTeamLineups,
+        }
+      })
+    )
+  }
+
   getHeaders() {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json')
