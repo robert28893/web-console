@@ -22,5 +22,7 @@
     </li>
   </ul>
   <div [ngbNavOutlet]="nav" class="mt-3"></div>
-  <div>Sân vận động: {{match.stadium?.name || ''}}</div>
+  <div class="row gx-0">
+    <div class="col bg-secondary-subtle"><b>Sân vận động: </b>{{match.stadium?.name || ''}}</div>
+  </div>
 </div>

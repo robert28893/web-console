@@ -1,1 +1,51 @@
-<p>lineups works!</p>
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <th class="text-start col-5">{{match?.homeTeam?.name || ''}}</th>
+    <th class="text-center col-2">Đội hình</th>
+    <th class="text-end col-5">{{match?.awayTeam?.name || ''}}</th>
+  </tr>
+  <tr *ngFor="let el of getLineupsToFor(); let i = index">
+    <td class="row gx-0">
+        <div class="col-md-1 text-black-50">
+          {{match?.homeTeamLineups?.at(i)?.jerseyNumber || ''}}
+        </div>
+        <div class="col-md-11">
+          {{match?.homeTeamLineups?.at(i)?.name || ''}}
+        </div>
+    </td>
+    <td></td>
+    <td class="row gx-0 text-end">
+      <div class="col-md-11">
+        {{match?.awayTeamLineups?.at(i)?.name || ''}}
+      </div>
+      <div class="col-md-1 text-black-50">
+        {{match?.awayTeamLineups?.at(i)?.jerseyNumber || ''}}
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <th class="text-start col-4"></th>
+    <th class="text-center col-4">Huấn luyện viên</th>
+    <th class="text-end col-4"></th>
+  </tr>
+  <tr *ngFor="let el of getManagersToFor(); let i = index">
+    <td class="row gx-0">
+      <div class="col">
+        {{match?.homeTeamManagers?.at(i)?.nickname || match?.homeTeamManagers?.at(i)?.name || ''}}
+      </div>
+    </td>
+    <td></td>
+    <td class="row gx-0 text-end">
+      <div class="col">
+        {{match?.awayTeamManagers?.at(i)?.nickname || match?.awayTeamManagers?.at(i)?.name || ''}}
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
