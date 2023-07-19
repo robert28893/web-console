@@ -2,26 +2,42 @@
   <table class="table table-hover">
     <tbody>
     <tr>
+      <th>STT</th>
       <th>Thời gian</th>
       <th>Trận đấu</th>
       <th>Kết quả</th>
+      <th></th>
     </tr>
-    <tr *ngFor="let match of this.matches" [routerLink]="routeLinkMatchDetail(match.id)" role="button">
+    <tr *ngFor="let match of this.pagingMatches.data; let i = index">
+      <td>
+        {{(this.pagingMatches.page - 1) * this.pagingMatches.pageSize + i + 1}}
+      </td>
       <td>
         <div>{{match.matchDate}}</div>
         <div>{{match.kickOff}}</div>
       </td>
       <td>
-        <div>{{match.homeTeam.name}}</div>
-        <div>{{match.awayTeam.name}}</div>
+        <div class="link-primary" role="button">{{match.homeTeam.name}}</div>
+        <div class="link-primary" role="button">{{match.awayTeam.name}}</div>
       </td>
       <td>
         <div>{{match.homeScore}}</div>
         <div>{{match.awayScore}}</div>
       </td>
+      <td>
+        <div class="link-primary" role="button" [routerLink]="routeLinkMatchDetail(match.id)">Chi tiết</div>
+      </td>
     </tr>
     </tbody>
   </table>
+  <ngb-pagination
+    [collectionSize]="this.pagingMatches.totalElements"
+    [(page)]="this.pagingMatches.page"
+    [maxSize]="this.pagingMatches.pageSize"
+    [rotate]="false"
+    [boundaryLinks]="true"
+    (pageChange)="getMatches()"
+  ></ngb-pagination>
 
 <!--  <div *ngIf="competition">{{competition.name}}</div>-->
 <!--  <div *ngIf="season">{{season.name||''}}</div>-->

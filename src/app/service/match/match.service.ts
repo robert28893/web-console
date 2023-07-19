@@ -4,6 +4,7 @@ import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../storage/storage.service";
 import {environment} from "../../../environments/environment";
+import {PaginationModel} from "../../model/pagination/pagination.model";
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +50,10 @@ export class MatchService {
   ) {
   }
 
-  public getMatches(competitionId: number, seasonId: number): Observable<MatchModel[]> {
+  public getMatches(competitionId: number, seasonId: number, page: number, pageSize: number): Observable<PaginationModel<MatchModel>> {
     return this.httpClient.get<any>(environment.apiUrl + '/soccer-service/match',
       Object.assign(this.getHeaders(),
-        {params: {'competitionId': competitionId, 'seasonId': seasonId}})
+        {params: {'competitionId': competitionId, 'seasonId': seasonId, 'page': page, 'pageSize': pageSize}})
     ).pipe(
       map(value => {
         console.log(value)
@@ -74,7 +75,7 @@ export class MatchService {
             kickOff: obj.kickOff,
           })
         }
-        return matches
+        return new PaginationModel(page, pageSize, value.object.totalElements, matches)
       }),
       // catchError(err => {
       //   console.log(err)
@@ -82,9 +83,9 @@ export class MatchService {
       // })
     )
 
-    return new Observable<MatchModel[]>(subscriber => {
-      subscriber.next(this.matches)
-    })
+    // return new Observable<MatchModel[]>(subscriber => {
+    //   subscriber.next(this.matches)
+    // })
   }
 
   getMatch(id: number): Observable<MatchModel> {
