@@ -1,4 +1,9 @@
 <div class="container-fluid">
+  <button *ngIf="this.filterTeam" type="button" class="close mb-3" aria-label="Close"
+  (click)="clearFilterTeam()">
+    {{this.filterTeam.name}}
+    <span aria-hidden="true">&times;</span>
+  </button>
   <table class="table table-hover">
     <tbody>
     <tr>
@@ -17,8 +22,8 @@
         <div>{{match.kickOff}}</div>
       </td>
       <td>
-        <div class="link-primary" role="button">{{match.homeTeam.name}}</div>
-        <div class="link-primary" role="button">{{match.awayTeam.name}}</div>
+        <div class="link-primary" role="button" (click)="clickOnTeam(match.homeTeam)">{{match.homeTeam.name}}</div>
+        <div class="link-primary" role="button" (click)="clickOnTeam(match.awayTeam)">{{match.awayTeam.name}}</div>
       </td>
       <td>
         <div>{{match.homeScore}}</div>

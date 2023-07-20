@@ -50,10 +50,14 @@ export class MatchService {
   ) {
   }
 
-  public getMatches(competitionId: number, seasonId: number, page: number, pageSize: number): Observable<PaginationModel<MatchModel>> {
+  public getMatches(competitionId: number, seasonId: number, page: number, pageSize: number, teamId?: number): Observable<PaginationModel<MatchModel>> {
+    let params: any = {'competitionId': competitionId, 'seasonId': seasonId, 'page': page, 'pageSize': pageSize}
+    if (teamId) {
+      params.teamId = teamId
+    }
     return this.httpClient.get<any>(environment.apiUrl + '/soccer-service/match',
       Object.assign(this.getHeaders(),
-        {params: {'competitionId': competitionId, 'seasonId': seasonId, 'page': page, 'pageSize': pageSize}})
+        {params: params})
     ).pipe(
       map(value => {
         console.log(value)
