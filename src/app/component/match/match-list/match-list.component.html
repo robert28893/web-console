@@ -1,9 +1,9 @@
 <div class="container-fluid">
-  <button *ngIf="this.filterTeam" type="button" class="close mb-3" aria-label="Close"
-  (click)="clearFilterTeam()">
-    {{this.filterTeam.name}}
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <span *ngIf="this.filterTeam" class="bi-tag">
+    <label class="m-1">{{this.filterTeam.name}}</label>
+    <i role="button" class="bi bi-x-circle" (click)="clearFilterTeam()"></i>
+  </span>
+
   <table class="table table-hover">
     <tbody>
     <tr>
@@ -44,6 +44,6 @@
     (pageChange)="getMatches()"
   ></ngb-pagination>
 
-<!--  <div *ngIf="competition">{{competition.name}}</div>-->
-<!--  <div *ngIf="season">{{season.name||''}}</div>-->
+  <!--  <div *ngIf="competition">{{competition.name}}</div>-->
+  <!--  <div *ngIf="season">{{season.name||''}}</div>-->
 </div>

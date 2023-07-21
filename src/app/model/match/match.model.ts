@@ -6,6 +6,11 @@ import {ManagerModel} from "../manager/manager.model";
 import {PlayerModel} from "../player/player.model";
 
 export class MatchModel {
+  public homeTeamManagers: ManagerModel[] = []
+  public awayTeamManagers: ManagerModel[] = []
+  public homeTeamLineups: PlayerModel[] = []
+  public awayTeamLineups: PlayerModel[] = []
+
   constructor(
     public id: number,
     public homeTeam: TeamModel,
@@ -17,10 +22,6 @@ export class MatchModel {
     public competition?: CompetitionModel,
     public season?: SeasonModel,
     public stadium?: StadiumModel,
-    public homeTeamManagers?: ManagerModel[],
-    public awayTeamManagers?: ManagerModel[],
-    public homeTeamLineups?: PlayerModel[],
-    public awayTeamLineups?: PlayerModel[],
   ) {
   }
 }

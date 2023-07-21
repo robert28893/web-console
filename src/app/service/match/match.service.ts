@@ -77,6 +77,10 @@ export class MatchService {
             awayScore: obj.awayScore,
             matchDate: obj.matchDate,
             kickOff: obj.kickOff,
+            homeTeamLineups: [],
+            awayTeamLineups: [],
+            homeTeamManagers: [],
+            awayTeamManagers: []
           })
         }
         return new PaginationModel(page, pageSize, value.object.totalElements, matches)

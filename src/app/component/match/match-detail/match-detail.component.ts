@@ -10,25 +10,31 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./match-detail.component.css']
 })
 export class MatchDetailComponent {
-  match: MatchModel = {
-    id: 1,
-    homeTeam: {
-      id: 2,
-      name: "MU"
-    },
-    awayTeam: {
-      id: 3,
-      name: "LIV"
-    },
-    homeScore: 3,
-    awayScore: 1,
-    matchDate: "11/03/2019",
-    kickOff: "21:30",
-    stadium: {
-      id: 1,
-      name: "Old Trafford"
-    },
-  }
+  // match: MatchModel = {
+  //   id: 1,
+  //   homeTeam: {
+  //     id: 2,
+  //     name: "MU"
+  //   },
+  //   awayTeam: {
+  //     id: 3,
+  //     name: "LIV"
+  //   },
+  //   homeScore: 3,
+  //   awayScore: 1,
+  //   matchDate: "11/03/2019",
+  //   kickOff: "21:30",
+  //   stadium: {
+  //     id: 1,
+  //     name: "Old Trafford"
+  //   },
+  //   homeTeamLineups: [],
+  //   awayTeamLineups: [],
+  //   homeTeamManagers: [],
+  //   awayTeamManagers: []
+  // }
+
+  match?: MatchModel;
 
   constructor(
     private matchService: MatchService,
@@ -43,7 +49,8 @@ export class MatchDetailComponent {
 
   getMatch() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.matchService.getMatch(id).subscribe(value => {
+    return this.matchService.getMatch(id)
+      .subscribe(value => {
       console.log(value)
       this.match = value
     })

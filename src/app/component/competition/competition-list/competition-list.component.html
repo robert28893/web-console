@@ -1,12 +1,11 @@
 <div class="container-fluid">
   <h3 class="mb-3">Giải đấu</h3>
-  <ul class="list-group list-group-flush" *ngFor="let competition of this.competitions | async">
-    <li class="list-group-item">
-      <a [title]="competition.name" [routerLink]="[competition.id]">
-        {{competition.name}}
-      </a>
-    </li>
-  </ul>
+  <div class="list-group" *ngFor="let competition of this.competitions | async">
+    <button type="button" class="list-group-item list-group-item-action"
+            [title]="competition.name" [routerLink]="[competition.id]">
+      {{competition.name}}
+    </button>
+  </div>
   <router-outlet></router-outlet>
 </div>
 

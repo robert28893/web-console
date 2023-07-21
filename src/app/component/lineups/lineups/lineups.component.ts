@@ -11,7 +11,7 @@ export class LineupsComponent {
 
   getLineupsToFor() {
     if (!this.match) return []
-    if (this.match.homeTeamLineups!.length > this.match.awayTeamLineups!.length) {
+    if (this.match.homeTeamLineups.length > this.match.awayTeamLineups.length) {
       return this.match.homeTeamLineups
     }
 
@@ -20,7 +20,7 @@ export class LineupsComponent {
 
   getManagersToFor() {
     if (!this.match) return []
-    if (this.match.homeTeamManagers!.length > this.match.awayTeamManagers!.length) {
+    if (this.match.homeTeamManagers.length > this.match.awayTeamManagers.length) {
       return this.match.homeTeamManagers
     }
 
