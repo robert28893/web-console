@@ -1,43 +1,41 @@
-<div class="container" xmlns="http://www.w3.org/1999/html">
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col-md-4">
-      <div class="mb-3">
-        <h3 class="mt-3 mb-3 text-center">Đăng nhập</h3>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col-md-4">
+    <div class="mb-3">
+      <h3 class="mt-3 mb-3 text-center">Đăng nhập</h3>
 
-        <form (ngSubmit)="login()" [formGroup]="loginForm">
-<!--              [class.was-validated]="isFormSubmitted">-->
-          <div class="mb-3">
-            <label for="username" class="form-label">Tên đăng nhập*</label>
-            <input type="text" class="form-control" id="username" formControlName="username"
-                   required [ngClass]="{
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <!--              [class.was-validated]="isFormSubmitted">-->
+        <div class="mb-3">
+          <label for="username" class="form-label">Tên đăng nhập*</label>
+          <input type="text" class="form-control" id="username" formControlName="username"
+                 required [ngClass]="{
                    'is-invalid': usernameFc.touched && usernameFc.errors,
                    'is-valid': usernameFc.valid}"/>
-            <div *ngIf="usernameFc.touched && usernameFc.errors" class="invalid-feedback">
-              <div *ngIf="usernameFc.errors?.['required']">Tên đăng nhập không hợp lệ</div>
-            </div>
+          <div *ngIf="usernameFc.touched && usernameFc.errors" class="invalid-feedback">
+            <div *ngIf="usernameFc.errors?.['required']">Tên đăng nhập không hợp lệ</div>
           </div>
+        </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">Mật khẩu*</label>
-            <input id="password" formControlName="password" type="password" class="form-control"
-                   required [ngClass]="{
+        <div class="mb-3">
+          <label for="password" class="form-label">Mật khẩu*</label>
+          <input id="password" formControlName="password" type="password" class="form-control"
+                 required [ngClass]="{
                    'is-invalid': passwordFc.touched && passwordFc.errors,
                    'is-valid': passwordFc.valid}"/>
-            <div *ngIf="passwordFc.touched && passwordFc.errors" class="invalid-feedback">
-              <div *ngIf="passwordFc.errors?.['required']" >Mật khẩu không hợp lệ</div>
-            </div>
+          <div *ngIf="passwordFc.touched && passwordFc.errors" class="invalid-feedback">
+            <div *ngIf="passwordFc.errors?.['required']">Mật khẩu không hợp lệ</div>
           </div>
+        </div>
 
-          <div class="mb-3">
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Đăng nhập</button>
-          </div>
-          <div class="text-center">Bạn chưa có tài khoản? <a [routerLink]="routeLinkRegister()">Đăng ký</a></div>
-        </form>
-      </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Đăng nhập</button>
+        </div>
+        <div class="text-center">Bạn chưa có tài khoản? <a [routerLink]="routeLinkRegister()">Đăng ký</a></div>
+      </form>
     </div>
-    <div class="col">
-    </div>
+  </div>
+  <div class="col">
   </div>
 </div>

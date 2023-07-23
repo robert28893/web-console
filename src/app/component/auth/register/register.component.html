@@ -1,57 +1,55 @@
-<div class="container">
-  <div class="row">
-    <div class="col"></div>
-    <div class="col-md-4">
-      <h3 class="mb-3 mt-3 text-center">Đăng ký</h3>
-      <form (ngSubmit)="register()" [formGroup]="registerForm">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email*</label>
-          <input type="email" id="email" class="form-control" formControlName="email"
-                 required [ngClass]="{
+<div class="row">
+  <div class="col"></div>
+  <div class="col-md-4">
+    <h3 class="mb-3 mt-3 text-center">Đăng ký</h3>
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email*</label>
+        <input type="email" id="email" class="form-control" formControlName="email"
+               required [ngClass]="{
                  'is-invalid': emailFc.touched && emailFc.errors,
                  'is-valid': emailFc.valid}"/>
-          <div *ngIf="emailFc.touched && emailFc.errors" class="invalid-feedback">
-            <div>Email không hợp lệ</div>
-          </div>
+        <div *ngIf="emailFc.touched && emailFc.errors" class="invalid-feedback">
+          <div>Email không hợp lệ</div>
         </div>
-        <div class="mb-3">
-          <label for="fullName" class="form-label">Họ tên*</label>
-          <input type="fullName" id="fullName" class="form-control" formControlName="fullName"
-                 required [ngClass]="{
+      </div>
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Họ tên*</label>
+        <input type="fullName" id="fullName" class="form-control" formControlName="fullName"
+               required [ngClass]="{
                  'is-invalid': fullNameFc.touched && fullNameFc.errors,
                  'is-valid': fullNameFc.valid}"/>
-          <div *ngIf="fullNameFc.touched && fullNameFc.errors" class="invalid-feedback">
-            <div *ngIf="fullNameFc.errors?.['required']">Họ tên không hợp lệ</div>
-          </div>
+        <div *ngIf="fullNameFc.touched && fullNameFc.errors" class="invalid-feedback">
+          <div *ngIf="fullNameFc.errors?.['required']">Họ tên không hợp lệ</div>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Mật khẩu*</label>
-          <input type="password" id="password" class="form-control" formControlName="password"
-                 required [ngClass]="{
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu*</label>
+        <input type="password" id="password" class="form-control" formControlName="password"
+               required [ngClass]="{
                  'is-invalid': passwordFc.touched && passwordFc.errors,
                  'is-valid': passwordFc.valid
                  }"/>
-          <div *ngIf="passwordFc.touched && passwordFc.errors" class="invalid-feedback">
-            <div *ngIf="passwordFc.errors?.['required']">Mật khẩu không hợp lệ</div>
-          </div>
+        <div *ngIf="passwordFc.touched && passwordFc.errors" class="invalid-feedback">
+          <div *ngIf="passwordFc.errors?.['required']">Mật khẩu không hợp lệ</div>
         </div>
-        <div class="mb-3">
-          <label for="repass" class="form-label">Nhập lại mật khẩu*</label>
-          <input type="password" formControlName="rePassword" id="repass" class="form-control"
-                 required [ngClass]="{
+      </div>
+      <div class="mb-3">
+        <label for="repass" class="form-label">Nhập lại mật khẩu*</label>
+        <input type="password" formControlName="rePassword" id="repass" class="form-control"
+               required [ngClass]="{
                  'is-invalid': rePasswordFc.touched && rePasswordFc.errors,
                  'is-valid': rePasswordFc.valid
                  }"/>
-          <div *ngIf="rePasswordFc.touched && rePasswordFc.errors" class="invalid-feedback">
-            <div *ngIf="rePasswordFc.errors?.['required']">Nhập lại mật khẩu không hợp lệ</div>
-          </div>
+        <div *ngIf="rePasswordFc.touched && rePasswordFc.errors" class="invalid-feedback">
+          <div *ngIf="rePasswordFc.errors?.['required']">Nhập lại mật khẩu không hợp lệ</div>
         </div>
-        <div class="mb-3">
-          <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Đăng ký</button>
-        </div>
-        <div class="text-center">Đã có tài khoản? <a [routerLink]="routerLinkLogin()">Đăng nhập</a></div>
-      </form>
-    </div>
-    <div class="col"></div>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Đăng ký</button>
+      </div>
+      <div class="text-center">Đã có tài khoản? <a [routerLink]="routerLinkLogin()">Đăng nhập</a></div>
+    </form>
   </div>
+  <div class="col"></div>
 </div>

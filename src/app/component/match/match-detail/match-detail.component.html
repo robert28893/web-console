@@ -1,4 +1,4 @@
-<div *ngIf="match" class="container-fluid">
+<ng-container *ngIf="match">
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
     <div><span class="bi bi-arrow-left m-3" role="button"
                [routerLink]="routerLinkCompetitionDetail(match.competition?.id || -1)">
@@ -26,4 +26,4 @@
     <div class="col"><b>Sân vận động: </b>{{match.stadium?.name || ''}}</div>
     <div class="col text-end"><b>Trọng tài: </b>{{match.referee?.name || ''}}</div>
   </div>
-</div>
+</ng-container>

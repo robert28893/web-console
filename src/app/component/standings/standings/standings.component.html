@@ -1,30 +1,28 @@
-<div class="container-fluid">
-  <table class="table table-hover">
-    <tbody>
-    <tr>
-      <th>Vị trí</th>
-      <th>Tên đội</th>
-      <th>Số trận</th>
-      <th>Thắng</th>
-      <th>Hòa</th>
-      <th>Thua</th>
-      <th>Bàn thắng</th>
-      <th>Bàn thua</th>
-      <th>Hiệu số</th>
-      <th>Số điểm</th>
-    </tr>
-    <tr *ngFor="let standing of this.standings | async; index as i">
-      <td>{{i+1}}</td>
-      <td>{{standing.teamName}}</td>
-      <td>{{standing.mp}}</td>
-      <td>{{standing.w}}</td>
-      <td>{{standing.d}}</td>
-      <td>{{standing.l}}</td>
-      <td>{{standing.gf}}</td>
-      <td>{{standing.ga}}</td>
-      <td>{{standing.gd}}</td>
-      <td>{{standing.pts}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <th>Vị trí</th>
+    <th>Tên đội</th>
+    <th>Số trận</th>
+    <th>Thắng</th>
+    <th>Hòa</th>
+    <th>Thua</th>
+    <th>Bàn thắng</th>
+    <th>Bàn thua</th>
+    <th>Hiệu số</th>
+    <th>Số điểm</th>
+  </tr>
+  <tr *ngFor="let standing of this.standings | async; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{standing.teamName}}</td>
+    <td>{{standing.mp}}</td>
+    <td>{{standing.w}}</td>
+    <td>{{standing.d}}</td>
+    <td>{{standing.l}}</td>
+    <td>{{standing.gf}}</td>
+    <td>{{standing.ga}}</td>
+    <td>{{standing.gd}}</td>
+    <td>{{standing.pts}}</td>
+  </tr>
+  </tbody>
+</table>
