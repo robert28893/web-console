@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {StorageService} from "../storage/storage.service";
 import {environment} from "../../../environments/environment";
 import {PaginationModel} from "../../model/pagination/pagination.model";
+import {reference} from "@popperjs/core";
 
 @Injectable({
   providedIn: 'root'
@@ -129,6 +130,9 @@ export class MatchService {
           awayTeamManagers: obj.awayTeamManagers,
           homeTeamLineups: obj.homeTeamLineups,
           awayTeamLineups: obj.awayTeamLineups,
+          referee: {
+            ...obj.referee
+          }
         }
       })
     )

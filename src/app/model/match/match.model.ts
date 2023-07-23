@@ -4,6 +4,7 @@ import {SeasonModel} from "../season/season.model";
 import {TeamModel} from "../team/team.model";
 import {ManagerModel} from "../manager/manager.model";
 import {PlayerModel} from "../player/player.model";
+import {RefereeModel} from "../referee/referee.model";
 
 export class MatchModel {
   public homeTeamManagers: ManagerModel[] = []
@@ -22,6 +23,7 @@ export class MatchModel {
     public competition?: CompetitionModel,
     public season?: SeasonModel,
     public stadium?: StadiumModel,
+    public referee?: RefereeModel,
   ) {
   }
 }
